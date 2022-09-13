@@ -1,0 +1,34 @@
+package study.Recursive;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.StringTokenizer;
+
+public class BOJ_1914_하노이탑_3 {
+    static int N, M;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+
+        M = 0;
+
+        move(N, 1, 2, 3);
+        System.out.println(M);
+        System.out.println(sb);
+    }
+
+    private static void move(int N, int start, int temp, int dest) {
+        if(N == 0) return;
+        M++;
+        move(N - 1, start, dest, temp);
+        sb.append(start + " " + dest + "\n");
+        move(N - 1, temp, start, dest);
+
+    }
+}
